@@ -4,13 +4,12 @@ import Setup from '@/views/Setup.vue';
 import Chat from '@/views/Chat.vue';
 import Settings from '@/views/Settings.vue';
 
-const routes =[
+const routes = [
   { path: '/', redirect: '/key' },
   { path: '/key', component: Key },
   { path: '/setup', component: Setup },
   { path: '/chat', component: Chat },
   { path: '/settings', component: Settings },
-  
 ]
 
 const router = createRouter({
@@ -18,18 +17,20 @@ const router = createRouter({
   routes
 })
 
-
-
 router.beforeEach((to, from, next) => {
   const apiKey = localStorage.getItem('apiKey');
   const agentId = localStorage.getItem('agentId');
 
-  if (!apiKey && to.path !== '/key') {
-    next('/key');
-  } else if (apiKey && !agentId && to.path !== '/setup') {
-    next('/setup');
-  } else if (apiKey && agentId && to.path !== '/chat') {
-    next('/chat');
+  if (to.path !== '/settings') {
+    if (!apiKey && to.path !== '/key') {
+      next('/key');
+    } else if (apiKey && !agentId && to.path !== '/setup') {
+      next('/setup');
+    } else if (apiKey && agentId && to.path !== '/chat') {
+      next('/chat');
+    } else {
+      next();
+    }
   } else {
     next();
   }
