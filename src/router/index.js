@@ -1,20 +1,14 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Key from '@/views/Key.vue';
+import Setup from '@/views/Setup.vue';
+import Chat from '@/views/Chat.vue';
 
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+
+const routes =[
+  { path: '/', redirect: '/key' },
+  { path: '/key', component: Key },
+  { path: '/setup', component: Setup },
+  { path: '/chat', component: Chat },
 ]
 
 const router = createRouter({
@@ -22,4 +16,21 @@ const router = createRouter({
   routes
 })
 
-export default router
+
+
+router.beforeEach((to, from, next) => {
+  const apiKey = localStorage.getItem('apiKey');
+  const agentId = localStorage.getItem('agentId');
+
+  if (!apiKey && to.path !== '/key') {
+    next('/key');
+  } else if (apiKey && !agentId && to.path !== '/setup') {
+    next('/setup');
+  } else if (apiKey && agentId && to.path !== '/chat') {
+    next('/chat');
+  } else {
+    next();
+  }
+});
+
+export default router;
