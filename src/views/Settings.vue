@@ -1,11 +1,14 @@
 <template>
   <div>
     <h1>Settings</h1>
-    <button @click="resetKeys">Reset Keys &amp; Assitant</button>
-<br/>
-    <button @click="resetAssistant">Reset Assistant</button>
-
-
+    <div class="button-wrapper">
+      <button @click="resetKeys">Reset Keys &amp; Assistant</button>
+      <p class="local-storage-text">{{ apiKey }}</p>
+    </div>
+    <div class="button-wrapper">
+      <button @click="resetAssistant">Reset Assistant</button>
+      <p class="local-storage-text">{{ agentId }}</p>
+    </div>
     <br/><br/><br/>
     <router-link to="/">
       <button>Cancel</button>
@@ -15,6 +18,14 @@
 
 <script>
 export default {
+  computed: {
+    apiKey() {
+      return localStorage.getItem('apiKey') || 'No API Key';
+    },
+    agentId() {
+      return localStorage.getItem('agentId') || 'No Agent ID';
+    }
+  },
   methods: {
     resetKeys() {
       localStorage.removeItem('apiKey');
@@ -22,7 +33,6 @@ export default {
       this.$router.push('/keys');
     },
     resetAssistant() {
-      
       localStorage.removeItem('agentId');
       this.$router.push('/setup');
     }
@@ -31,5 +41,14 @@ export default {
 </script>
 
 <style>
+.button-wrapper {
+  margin-bottom: 20px;
+}
 
+.local-storage-text {
+  margin-top: 5px;
+  font-size: 0.9em;
+  color: #555;
+  user-select: all;
+}
 </style>
