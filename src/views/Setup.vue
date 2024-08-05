@@ -1,4 +1,3 @@
-
 <template>
   <div class="container">
     <h1>Setup</h1>
@@ -52,12 +51,44 @@ button:hover {
   background-color: #369a6e;
 }
 </style>
+
 <script>
 export default {
   methods: {
-    saveAgentId() {
-      localStorage.setItem('agentId', 'placeholder-id');
-      this.$router.push('/chat');
+    async saveAgentId() {
+      try {
+        const apiKey = localStorage.getItem('apiKey');
+        if (!apiKey) {
+          throw new Error('API key not found in local storage');
+        }
+
+        const response = await fetch('https://api.openai.com/v1/assistants', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`,
+            'OpenAI-Beta': 'assistants=v2'
+          },
+          body: JSON.stringify({
+            instructions: "You are an OSInt Investigator. When asked a question, use general knowledge and publicly available sources to answer the question.",
+            name: "Vera.ai",
+            tools: [],
+            model: "gpt-4o-mini"
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to create assistant');
+        }
+
+        const data = await response.json();
+        const assistantId = data.id;
+        localStorage.setItem('agentId', assistantId);
+
+        this.$router.push('/chat');
+      } catch (error) {
+        console.error('Error creating assistant:', error);
+      }
     },
   },
 };
