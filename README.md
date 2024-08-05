@@ -1,4 +1,16 @@
-# nodejs
+# Vera.ai
+
+Open Source Intelligence (OSInt) meets OpenAI Assistants
+
+
+# # Features
+
+Standalone PWA
+Automatic setup from one API Key
+Chat with Vera investigator
+Connection to many osint services
+Self-hosted and open source
+User-friendnly vue chat app 
 
 ## Project setup
 ```
