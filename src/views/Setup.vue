@@ -3,7 +3,11 @@
     <h1>Setup</h1>
     <p>{{ statusMessage }}</p>
     <div v-if="loading" class="spinner"></div>
-    <button @click="saveAgentId">Complete Setup</button>
+    <div v-if="error">
+      <p class="error">{{ error }}</p>
+      <button @click="saveAgentId">Retry</button>
+      <button @click="resetApiKey">Reset API Key</button>
+    </div>
   </div>
 </template>
 
@@ -21,6 +25,11 @@ h1 {
 
 p {
   color: #e0e0e0;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
 }
 
 .spinner {
@@ -45,6 +54,7 @@ button {
   background-color: #42b983;
   color: #fff;
   cursor: pointer;
+  margin: 5px;
 }
 
 button:hover {
@@ -58,6 +68,7 @@ export default {
     return {
       statusMessage: 'Setting up, please wait...',
       loading: true,
+      error: null,
     };
   },
   mounted() {
@@ -65,6 +76,10 @@ export default {
   },
   methods: {
     async saveAgentId() {
+      this.statusMessage = 'Setting up, please wait...';
+      this.loading = true;
+      this.error = null;
+      
       try {
         const apiKey = localStorage.getItem('apiKey');
         if (!apiKey) {
@@ -96,9 +111,14 @@ export default {
 
         this.$router.push('/chat');
       } catch (error) {
-        this.statusMessage = `Error: ${error.message}`;
+        this.statusMessage = 'Setup failed, please try again.';
+        this.error = error.message;
         this.loading = false;
       }
+    },
+    resetApiKey() {
+      localStorage.removeItem('apiKey');
+      this.$router.push('/');
     },
   },
 };
