@@ -16,7 +16,7 @@ export default {
   name: 'App',
   computed: {
     shouldShowSettingsIcon() {
-      return this.$route.path !== '/setup';
+      return true; //this.$route.path !== '/setup';
     },
     settingsLink() {
       return this.$route.path === '/settings' ? '/' : '/settings';

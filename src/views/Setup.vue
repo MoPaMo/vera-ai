@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <h1>Setup</h1>
-    <p>Setting up, please wait...</p>
-    <div class="spinner"></div>
+    <p>{{ statusMessage }}</p>
+    <div v-if="loading" class="spinner"></div>
     <button @click="saveAgentId">Complete Setup</button>
   </div>
 </template>
@@ -54,6 +54,15 @@ button:hover {
 
 <script>
 export default {
+  data() {
+    return {
+      statusMessage: 'Setting up, please wait...',
+      loading: true,
+    };
+  },
+  mounted() {
+    this.saveAgentId();
+  },
   methods: {
     async saveAgentId() {
       try {
@@ -67,14 +76,14 @@ export default {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${apiKey}`,
-            'OpenAI-Beta': 'assistants=v2'
+            'OpenAI-Beta': 'assistants=v2',
           },
           body: JSON.stringify({
-            instructions: "You are an OSInt Investigator. When asked a question, use general knowledge and publicly available sources to answer the question.",
-            name: "Vera.ai",
+            instructions: 'You are an OSInt Investigator. When asked a question, use general knowledge and publicly available sources to answer the question.',
+            name: 'Vera.ai',
             tools: [],
-            model: "gpt-4o-mini"
-          })
+            model: 'gpt-4o-mini',
+          }),
         });
 
         if (!response.ok) {
@@ -87,7 +96,8 @@ export default {
 
         this.$router.push('/chat');
       } catch (error) {
-        console.error('Error creating assistant:', error);
+        this.statusMessage = `Error: ${error.message}`;
+        this.loading = false;
       }
     },
   },
