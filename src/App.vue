@@ -1,13 +1,27 @@
 <template>
   <div id="app">
-    <router-link to="/settings" class="settings-icon">&#9881;</router-link>
+    <router-link 
+      v-if="shouldShowSettingsIcon" 
+      :to="settingsLink" 
+      class="settings-icon"
+    >
+      &#9881;
+    </router-link>
     <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  computed: {
+    shouldShowSettingsIcon() {
+      return this.$route.path !== '/setup';
+    },
+    settingsLink() {
+      return this.$route.path === '/settings' ? '/' : '/settings';
+    }
+  }
 }
 </script>
 
