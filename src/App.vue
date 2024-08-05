@@ -1,12 +1,15 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
+    <router-link to="/settings" class="settings-icon">&#9881;</router-link>
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'App'
+}
+</script>
 
 <style>
 body {
@@ -20,27 +23,20 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  position: relative;
 }
 
-nav {
-  padding: 30px;
-  background-color: #1e1e1e;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-nav a {
-  font-weight: bold;
+.settings-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
   color: #e0e0e0;
   text-decoration: none;
-  margin: 0 15px;
 }
 
-nav a.router-link-exact-active {
+.settings-icon:hover {
   color: #42b983;
 }
-
-a:hover {
-  color: #42b983;
-}
-
 </style>

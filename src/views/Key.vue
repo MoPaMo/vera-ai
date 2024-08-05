@@ -2,8 +2,10 @@
 <template>
   <div class="container">
     <h1>Enter API Key</h1>
-    <input v-model="apiKey" placeholder="Enter your API key" />
-    <button @click="saveApiKey">Save Key</button>
+    <div class="input-group">
+      <input v-model="apiKey" placeholder="Enter your API key" />
+      <button @click="saveApiKey">Save Key</button>
+    </div>
   </div>
 </template>
 
@@ -19,14 +21,22 @@ h1 {
   color: #42b983;
 }
 
+.input-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 input {
-  width: 100%;
+  flex: 1;
   padding: 10px;
-  margin: 10px 0;
+  margin: 10px 5px 10px 0;
   border: none;
   border-radius: 5px;
   background-color: #333;
   color: #e0e0e0;
+  max-width: 70%;
+  box-sizing: border-box;
 }
 
 button {

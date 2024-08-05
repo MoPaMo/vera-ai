@@ -2,13 +2,15 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import Key from '@/views/Key.vue';
 import Setup from '@/views/Setup.vue';
 import Chat from '@/views/Chat.vue';
-
+import Settings from '@/views/Settings.vue';
 
 const routes =[
   { path: '/', redirect: '/key' },
   { path: '/key', component: Key },
   { path: '/setup', component: Setup },
   { path: '/chat', component: Chat },
+  { path: '/settings', component: Settings },
+  
 ]
 
 const router = createRouter({
