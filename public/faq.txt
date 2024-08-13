@@ -1,0 +1,18 @@
+Who is eligible?
+You need to be a high schooler (or younger). You just need a GitHub account & a Slack account to participate. Different prizes have different country restrictions.
+What types of projects count?
+Projects need to be open source (ie. linked to a GitHub repo) & have a way for people to experience it (ie. a game, a website, etc). At the end, each 'scrap' of your project will be put together in a timeline, so make sure to document your progress! Check the constitution for details on what counts.
+How many projects can I build?
+You can submit as many projects as you make. We just count the hours!
+How much does it cost?
+100% free – all the prizes are donated to us or paid for by us! Some shipments may have customs charges that we can't cover depending on your country.
+I need help!
+Get it in the #arcade-help channel of the Hack Club Slack. Alternatively, reach out to arcade@hackclub.com
+My hours aren't counted!
+We have human review on all your amazing work! Your 'scraps' may take a few days to review, but we'll get to it.
+Does a team project count?
+We count the hours of work you put in, so make sure to post 'scraps' of your work & show that it was you doing the work.
+What about school work or a job?
+The arcade is about the joy of building for the sake of building. If you're building something for school or work we can't count it.
+What counts as a scrap?
+Code needs a commit! Things like sprig or blot share links also work. 3D models should also go on a host like Printables or Github.
