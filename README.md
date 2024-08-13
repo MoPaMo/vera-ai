@@ -1,15 +1,14 @@
-# Vera.ai
+# Hakkuunator
 
-Open Source PWA ChatGPT Client
+Arcade Hack Club AI Assistant 
 
 
 # # Features
 
 Standalone PWA
 Automatic setup from one API Key
-Select differen models
-Set Temperature 
-Custom System prompt
+Answers many different questions regarding hack club
+
 
 ## Project setup
 ```
