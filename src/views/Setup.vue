@@ -12,25 +12,6 @@
 </template>
 
 <style>
-.container {
-  padding: 20px;
-  max-width: 400px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-h1 {
-  color: #42b983;
-}
-
-p {
-  color: #e0e0e0;
-}
-
-.error {
-  color: red;
-  margin-top: 10px;
-}
 
 .spinner {
   border: 4px solid rgba(255, 255, 255, 0.1);
@@ -47,19 +28,7 @@ p {
   100% { transform: rotate(360deg); }
 }
 
-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #42b983;
-  color: #fff;
-  cursor: pointer;
-  margin: 5px;
-}
 
-button:hover {
-  background-color: #369a6e;
-}
 </style>
 
 <script>

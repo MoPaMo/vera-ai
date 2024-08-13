@@ -26,12 +26,6 @@ export default {
 </script>
 
 <style>
-body {
-  background-color: #121212;
-  color: #e0e0e0;
-  margin: 0;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-}
 
 #app {
   -webkit-font-smoothing: antialiased;
@@ -39,6 +33,8 @@ body {
   text-align: center;
   position: relative;
   min-height: 100vh;
+  background-color: --dark;
+  color: --snow
 }
 
 .settings-icon {
@@ -52,25 +48,4 @@ body {
   transition: color 0.3s ease;
 }
 
-.settings-icon:hover {
-  color: #33d6a6;
-}
-
-a {
-  color: #338eda;
-}
-
-button {
-  background-color: #ec3750;
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #ff8c37;
-}
 </style>

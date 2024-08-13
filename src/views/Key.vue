@@ -1,10 +1,12 @@
 <template>
-  <div class="container">
-    <h1>Enter API Key</h1>
+  <div class="container dark">
+    <h1 class="title">Enter API Key</h1>
+    <br/>
     <div class="input-group">
       <input v-model="apiKey" placeholder="Enter your API key" />
       <button @click="saveApiKey">Save Key</button>
     </div>
+    <br/>
     <div>
       <a href="https://platform.openai.com/api-keys" target="_blank">Get your API key here</a>
     </div>
@@ -13,61 +15,11 @@
 </template>
 
 <style>
-.container {
-  padding: 20px;
-  max-width: 400px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-h1 {
-  color: #ec3750;
-}
-
-.input-group {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-input {
-  flex: 1;
-  padding: 10px;
-  margin: 10px 5px 10px 0;
-  border: none;
-  border-radius: 5px;
-  background-color: #333;
-  color: #e0e0e0;
-  max-width: 70%;
-  box-sizing: border-box;
-}
-
-button {
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #33d6a6;
-  transition-duration:.25s
-}
-
-button:hover {
-  background-color: #338eda;
-}
-
-a {
-  color: #5bc0de;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-.error {
-  color: #ec3750;
-  margin-top: 10px;
-}
+  .input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>
 
 <script>
