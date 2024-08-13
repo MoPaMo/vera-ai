@@ -1,11 +1,11 @@
 <template>
-  <div id="app">
+  <div id="app" class="container">
     <router-link 
       v-if="shouldShowSettingsIcon" 
       :to="settingsLink" 
       class="settings-icon"
     >
-      &#9881;
+      <img :src="'https://icons.hackclub.com/api/icons/hackclub-dark/'+settingsIcon+'.svg'" style="height:1.5em; display: inline">
     </router-link>
     <router-view/>
   </div>
@@ -20,6 +20,9 @@ export default {
     },
     settingsLink() {
       return this.$route.path === '/settings' ? '/' : '/settings';
+    },
+    settingsIcon(){
+      return this.$route.path === '/settings' ? 'post-cancel' : 'settings'
     }
   }
 }
@@ -34,7 +37,8 @@ export default {
   position: relative;
   min-height: 100vh;
   background-color: --dark;
-  color: --snow
+  color: --snow;
+  padding-top: 2rem;
 }
 
 .settings-icon {
