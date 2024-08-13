@@ -5,13 +5,15 @@
       :to="settingsLink" 
       class="settings-icon"
     >
-      <img :src="'https://icons.hackclub.com/api/icons/hackclub-dark/'+settingsIcon+'.svg'" style="height:1.5em; display: inline">
+
+      <HCBIcon color="white" :glyph="settingsIcon" />
     </router-link>
     <router-view/>
   </div>
 </template>
 
 <script>
+  import HCBIcon from "@/components/HCBIcon.vue"
 export default {
   name: 'App',
   computed: {

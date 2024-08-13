@@ -2,13 +2,15 @@
   <div class="container dark">
     <h1 class="title">Enter API Key</h1>
     <br/>
+    <div class="card-sunken">
     <div class="input-group">
       <input v-model="apiKey" placeholder="Enter your API key" />
-      <button @click="saveApiKey">Save Key</button>
+      <button @click="saveApiKey">Save</button>
     </div>
     <br/>
     <div>
       <a href="https://platform.openai.com/api-keys" target="_blank">Get your API key here</a>
+    </div>
     </div>
     <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
   </div>

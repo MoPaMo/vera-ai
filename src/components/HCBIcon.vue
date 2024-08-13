@@ -18,8 +18,14 @@ export default {
     }
   },
   computed: {
+    formattedColor() {
+      if (this.color.startsWith('#')) {
+        return this.color.replace('#', '0x');
+      }
+      return this.color;
+    },
     iconUrl() {
-      return `https://icons.hackclub.com/api/icons/${this.color}/${this.glyph}.svg`;
+      return `https://icons.hackclub.com/api/icons/${this.formattedColor}/${this.glyph}.svg`;
     }
   }
 }
