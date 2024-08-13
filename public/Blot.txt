@@ -1,0 +1,8 @@
+Create programmatic art in our web-based editor and submit it to the gallery and we'll send you a CNC machine which can make that art for free. Blot is a You Ship, We Ship project from Hack Club.
+Everything about Blot is open source. The online editor and drawing library can be freely used by anyone, and we encourage all to submit to the gallery through PRs! However, you must be a teenager or younger to receive a free machine.
+
+Blot is...
+
+A custom CNC drawing machine designed from scratch to introduce you to digital fabrication. It's made of 6 unique 3D printed parts with a custom control board and easy to understand firmware, which can be interfaced with through JavaScript in the browser. Blot is designed in OnShape. Check out the 3D model of the project. You can find the bill of materials here and, if you'd like to 3D print your Blot, the parts are here. The entire build costs about $150 dollars. If you're a teen we will give you all the parts for a PR with your an art piece you coded yourself.
+
+A web based editor for programmatic art that we designed specifically for pen plotting with a custom geometry library. We practiced programmatic pen plotting with some amazing artists. There is so much to learn and explore on the programming and the aesthetic side.

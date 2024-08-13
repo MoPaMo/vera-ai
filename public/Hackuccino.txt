@@ -1,0 +1,7 @@
+Create a 3D website
+A-Frame is an easy to use, beginner-focused web library that allows you to create 3D worlds extremely quickly! Ch eck out their getting started guide to start creating amazing 3D websites with just 40 lines of code! (Note: you're not restricted just to A-Frame. Feel free to use whatever you are comfortable with!)
+Submit your site
+You'll need to have a url where we can see your code, whether it be GitHub or something like ReplIt and a live url where we can see it! You can do this using Vercel or GitHub Pages.
+Get a free Frappuccino
+After submitting, you'll get a grant from HCB to spend on a frappuccino! Enjoy whichever flavor your heart desires--great work on the website you built!
+Beta running June14-July14
