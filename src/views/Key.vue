@@ -21,7 +21,7 @@
 }
 
 h1 {
-  color: #42b983;
+  color: #ec3750;
 }
 
 .input-group {
@@ -43,20 +43,20 @@ input {
 }
 
 button {
+  color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #42b983;
-  color: #fff;
-  cursor: pointer;
+  background-color: #33d6a6;
+  transition-duration:.25s
 }
 
 button:hover {
-  background-color: #369a6e;
+  background-color: #338eda;
 }
 
 a {
-  color: #42b983;
+  color: #5bc0de;
   text-decoration: none;
 }
 
@@ -65,7 +65,7 @@ a:hover {
 }
 
 .error {
-  color: red;
+  color: #ec3750;
   margin-top: 10px;
 }
 </style>

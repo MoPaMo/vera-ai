@@ -38,6 +38,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   position: relative;
+  min-height: 100vh;
 }
 
 .settings-icon {
@@ -48,9 +49,28 @@ body {
   cursor: pointer;
   color: #e0e0e0;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .settings-icon:hover {
-  color: #42b983;
+  color: #33d6a6;
+}
+
+a {
+  color: #338eda;
+}
+
+button {
+  background-color: #ec3750;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff8c37;
 }
 </style>
