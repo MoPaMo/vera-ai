@@ -5,16 +5,18 @@
       :to="settingsLink" 
       class="settings-icon"
     >
-
-      <HCBIcon color="white" :glyph="settingsIcon" />
+      <HCBIcon color="#000000" :glyph="settingsIcon" />
     </router-link>
     <router-view/>
   </div>
 </template>
 
 <script>
-  import HCBIcon from "@/components/HCBIcon.vue"
+  import HCBIcon from "./components/HCBIcon.vue";
 export default {
+  components: {
+    HCBIcon
+  },
   name: 'App',
   computed: {
     shouldShowSettingsIcon() {
@@ -52,6 +54,7 @@ export default {
   color: #e0e0e0;
   text-decoration: none;
   transition: color 0.3s ease;
+  text-size:25pt;
 }
 
 </style>

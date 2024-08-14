@@ -35,8 +35,9 @@ export default {
 .hackclub-icon {
   display: inline-block;
 }
-.hackclub-icon img {
+.hackclub-icon img, .hackclub-icon {
   max-width: 100%;
   height: auto;
+  max-height: 1em;
 }
 </style>
