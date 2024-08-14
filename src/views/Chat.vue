@@ -2,6 +2,7 @@
   <div class="chat-app">
     <div class="messages">
       <div v-for="(message, index) in messages" :key="index" :class="message.role">
+        <HCBIcon glyph="bob" v-if="message.role == 'assistant'" />
         <p>{{ message.content[0].text }}</p>
       </div>
     </div>
@@ -12,9 +13,13 @@
 
 <script>
 import axios from 'axios';
-
+import HCBIcon from "@/components/HCBIcon.vue"
 export default {
+  components:{
+    HCBIcon
+  },
   data() {
+    
     return {
       userMessage: '',
       messages: []
@@ -52,12 +57,17 @@ export default {
             'Authorization': `Bearer ${apiKey}`
           }
         })
+        alert(JSON.stringify(response.data))
         this.messages.push({
           role: 'assistant',
           content: response.data.choices[0].message.content
         });
       } catch (error) {
         console.error('Error sending message:', error);
+        this.messages.push({
+          role: 'assistant',
+          content: error
+        });
       }
 
       this.userMessage = '';
@@ -73,8 +83,7 @@ export default {
   padding: 20px;
   border: 1px solid #333;
   border-radius: 10px;
-  background-color: #1e1e1e;
-  color: #e0e0e0;
+ 
 }
 .messages {
   max-height: 400px;
@@ -87,31 +96,11 @@ export default {
   margin-bottom: 10px;
 }
 .user {
-  background-color: #333;
-  color: #a0f0a0;
+  
   text-align: right;
 }
 .assistant {
-  background-color: #2c2c2c;
-  color: #a0f0a0;
+  
 }
-input {
-  width: calc(100% - 60px);
-  padding: 10px;
-  border: 1px solid #444;
-  border-radius: 5px;
-  background-color: #333;
-  color: #e0e0e0;
-}
-button {
-  padding: 10px 20px;
-  border: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-}
-button:hover {
-  background-color: #0056b3;
-}
+
 </style>
