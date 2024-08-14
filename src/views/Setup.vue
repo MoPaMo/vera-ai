@@ -73,12 +73,31 @@ export default {
         if (!response.ok) {
           throw new Error('Failed to create assistant');
         }
-
+this.statusMessage = 'Creating Thread'
         const data = await response.json();
         const assistantId = data.id;
         localStorage.setItem('agentId', assistantId);
+        fetch('https://api.openai.com/v1/threads', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`,
+            'OpenAI-Beta': 'assistants=v2'
+          },
+          body: JSON.stringify({})
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.id) {
+            localStorage.setItem('threadId', data.id);
+            this.$router.push('/chat');
+          } else {
+            throw  new Error('Failed to get thread ID: '+data);
+          }
+        })
+  
 
-        this.$router.push('/chat');
+        
       } catch (error) {
         this.statusMessage = 'Setup failed, please try again.';
         this.error = error.message;
