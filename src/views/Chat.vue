@@ -3,7 +3,7 @@
     <div class="messages">
       <div v-for="(message, index) in messages" :key="index" :class="message.role">
         <HCBIcon glyph="bob" v-if="message.role == 'assistant'" />
-        <p>{{ message.content[0].text }}</p>
+        <p>{{ message.content[0].text.value }}</p>
       </div>
     </div>
     <input v-model="userMessage" @keyup.enter="sendMessage" placeholder="Type your message...">
@@ -19,7 +19,6 @@ export default {
     HCBIcon
   },
   data() {
-    
     return {
       userMessage: '',
       messages: []
@@ -29,39 +28,64 @@ export default {
     async sendMessage() {
       if (!this.userMessage.trim()) return;
 
-
-      this.messages.push({
-        role: 'user',
-        content: [{ type: 'text', text: this.userMessage }]
-      });
-
-
       const data = {
-        model: 'gpt-4o',
-        messages: this.messages,
-        temperature: 1,
-        max_tokens: 256,
-        top_p: 1,
-        frequency_penalty: 0,
-        presence_penalty: 0,
-        response_format: { type: 'text' }
+        "assistant_id": localStorage.getItem('assistantId'),
+        "thread": {
+          "messages": [
+            {
+              "role": "user",
+              "content": [
+                {
+                  "type": "text",
+                  "text": {
+                    "value": this.userMessage
+                  }
+                }
+              ]
+            }
+          ]
+        }
       };
 
       try {
-
-        const apiKey = localStorage.getItem('apiKey');
-
-        const response = await axios.post('https://api.openai.com/v1/chat/completions', data, {
+        const response = await axios.post('https://api.openai.com/v1/threads/runs', data, {
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiKey}`
+            'Authorization': `Bearer ${localStorage.getItem('apiKey')}`
           }
-        })
-        alert(JSON.stringify(response.data))
-        this.messages.push({
-          role: 'assistant',
-          content: response.data.choices[0].message.content
         });
+
+        const runId = response.data.id;
+        const threadId = response.data.thread_id;
+
+        this.messages.push({
+          role: 'user',
+          content: [
+            {
+              type: 'text',
+              text: {
+                value: this.userMessage
+              }
+            }
+          ]
+        });
+
+        this.userMessage = '';
+
+        while (true) {
+          const response = await axios.get(`https://api.openai.com/v1/threads/${threadId}/messages`, {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${localStorage.getItem('apiKey')}`
+            }
+          });
+
+          if (response.data.data.length === 0) {
+            break;
+          }
+
+          this.messages.push(...response.data.data);
+        }
       } catch (error) {
         console.error('Error sending message:', error);
         this.messages.push({
@@ -69,38 +93,7 @@ export default {
           content: error
         });
       }
-
-      this.userMessage = '';
     }
   }
 };
 </script>
-
-<style scoped>
-.chat-app {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #333;
-  border-radius: 10px;
- 
-}
-.messages {
-  max-height: 400px;
-  overflow-y: auto;
-  margin-bottom: 10px;
-}
-.user, .assistant {
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-.user {
-  
-  text-align: right;
-}
-.assistant {
-  
-}
-
-</style>
